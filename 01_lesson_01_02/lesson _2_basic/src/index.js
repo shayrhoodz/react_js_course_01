@@ -1,3 +1,5 @@
-import {mBusi} from './makeBusiness';
+"use strict";
 
-mBusi.business();
+var _makeBusiness = require("./makeBusiness");
+
+_makeBusiness.mBusi.business();
