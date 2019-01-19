@@ -4,7 +4,7 @@ const employers = ['Alex', '', 'ludmila', 'Viktor', '', 'oleg', 'iNna', 'Ivan', 
 
 // console.log(employers);
 
-let employersNames = employers.filter(employers => employers.length > 0 != '');
+let employersNames = employers.filter(employers => employers.length > 0 && employers != '');
 
 employersNames = employersNames.map((item) => item.toLowerCase().trim());
 
