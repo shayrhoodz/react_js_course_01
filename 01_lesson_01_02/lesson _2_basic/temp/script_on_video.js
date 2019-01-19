@@ -2,6 +2,8 @@ function button() {
   return 'button';
 }
 
+
+// export default class Slider { // если экспорт только 1 класса
 class Slider { // класс указывается с большой буквы
   constructor(width, height, count) {
     this.width = width;
@@ -34,9 +36,12 @@ class AutoSlider extends Slider { // наследование другого к�
 // slider.whoAmI(); // этот метод пришел из родительского класса Slider
 // slider.play();
 
-export {button, Slider}; // экпортируем из файла, ";" обязательная
+// экпортируем из файла, ";" обязательная
+// export {button, Slider};
+// export {button as btn, Slider}; // можно задать другое имя с помощью as
+export {button};
 
-
+export default Slider; // экспорт по умолчанию, должен быть только один в файле
 
 
 // const slider = new Slider(600, 400, 5),
