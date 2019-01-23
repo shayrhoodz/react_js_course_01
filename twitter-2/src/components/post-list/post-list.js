@@ -6,7 +6,7 @@ import './post-list.css'
 
 const PostList = ({posts}) => {
 
-  const elements = posts.filter(posts => typeof posts === 'object' && posts.constructor !== Array).map((item) => {
+  const elements = posts.filter(posts => typeof posts === 'object' && posts.constructor === Object).map((item) => {
     const {id, ...itemProps} = item;
     return (
       <li key={id} className='list-group-item'>
