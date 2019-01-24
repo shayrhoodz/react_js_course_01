@@ -13,7 +13,7 @@ const PostList = ({posts, onDelete}) => {
 
     const randomId = nanoid();
 
-    console.log (randomId);
+    // console.log (randomId);
 
     return (
       <li key={randomId} className='list-group-item'>
