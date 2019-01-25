@@ -6,15 +6,12 @@ import nanoid from 'nanoid';
 
 import './post-list.css'
 
-const PostList = ({posts, onDelete}) => {
+const PostList = ({posts, onDelete, onToggleImportant, onToggleLiked}) => {
 
   const elements = posts.filter(posts => typeof posts === 'object' && posts.constructor === Object).map((item) => {
     const {id, ...itemProps} = item;
-
     const randomId = nanoid();
-
     // console.log (randomId);
-
     return (
       <li key={randomId} className='list-group-item'>
         {/* <PostListItem 
@@ -22,7 +19,9 @@ const PostList = ({posts, onDelete}) => {
         important={item.important} /> */}
         <PostListItem 
           {...itemProps}
-          onDelete={() => onDelete(id)} />
+          onDelete={() => onDelete(id)}
+          onToggleImportant={() => onToggleImportant(id)}
+          onToggleLiked={() => onToggleLiked(id)}/>
       </li>
     )
   })

@@ -15,7 +15,7 @@ const BottomPanel = styled.div`
 
 const PostAddFrom = ({onAdd}) => {
   return (
-    <BottomPanel>
+    <form className="bottom-panel d-flex">
       <input
         type="text"
         placeholder="О чем вы думаете сейчас?"
@@ -27,7 +27,7 @@ const PostAddFrom = ({onAdd}) => {
         onClick={() => onAdd('Hello')}>
         Добавить
       </button>
-    </BottomPanel>
+    </form>
   )
 }
 
