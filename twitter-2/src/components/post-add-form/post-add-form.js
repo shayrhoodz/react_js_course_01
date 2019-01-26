@@ -32,9 +32,11 @@ export default class PostAddFrom extends Component {
   onSubmit(e){
     e.preventDefault();
     console.log(`Проверка поста ${this.state.text}`);
-    if (this.state.text !== '') {
-      this.props.onAdd(this.state.text)
-    }
+    if (this.state.text === "") {
+      return
+    } else {
+        this.props.onAdd(this.state.text)
+      }
     this.setState({
       text: ''
     })    
