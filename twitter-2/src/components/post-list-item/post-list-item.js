@@ -25,7 +25,7 @@ export default class PostListItem extends Component {
   // }
 
   render() {
-    const {label, onDelete, onToogleImportant, onToggleLiked, important, like} = this.props;
+    const {label, onDelete, onToggleImportant, onToggleLiked, important, like} = this.props;
     // const {important, like} = this.state; // теперь у нас нету state, поэтому нет необходимости получать от сюда данные
     let classNames = 'app-list-item d-flex justify-content-between';
     
@@ -40,14 +40,16 @@ export default class PostListItem extends Component {
       <div className={classNames}>
         <span 
         className="app-list-item-label"
-        onClick={onToggleLiked}>
+        onClick={onToggleLiked}
+        // onMouseDown={onToogleImportant}
+        >
           {label}
         </span>
         <div className="d-flex justify-content-center align-items-center">
           <button 
           type="button" 
           className="btn-star btn-sm"
-          onClick={onToogleImportant}>
+          onClick={onToggleImportant}>
             <i className="fa fa-star"></i>
           </button>
           <button 
