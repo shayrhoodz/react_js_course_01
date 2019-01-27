@@ -6,7 +6,6 @@ import ItemList from '../itemList';
 import CharDetails from '../charDetails';
 import GotService from '../../services';
 
-
 const App = () => {
     return (
         <> 
