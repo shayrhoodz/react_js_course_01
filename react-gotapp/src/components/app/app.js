@@ -26,19 +26,19 @@ export default class App extends Component {
     // }
 
     state = {
-        disableChar: false
+        showChar: false
     }
 
-    offChar = () => {
+    toggleBlock = () => {
         this.setState({
-            disableChar: !this.state.disableChar
+            showChar: !this.state.showChar
         })
-        // console.log(this.state.disableChar);
+        // console.log(this.state.showChar);
     }
 
     render() {
-        const {disableChar} = this.state;
-        const toggleRandomChar = !(disableChar) ? <RandomChar/> : null;
+        const {showChar} = this.state;
+        const toggleRandomChar = !showChar ? <RandomChar/> : null;
         return (
             <> 
                 <Container>
@@ -47,7 +47,7 @@ export default class App extends Component {
                 <Container>
                     <Row>
                         <Col lg={{size: 5, offset: 0}}>
-                            <Button onClick={this.offChar}>Show random Character</Button>
+                            <Button onClick={this.toggleBlock}>Show random Character</Button>
                             {/* <RandomChar/> */}
                             {toggleRandomChar}
                         </Col>
