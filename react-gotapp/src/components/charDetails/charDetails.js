@@ -19,7 +19,6 @@ export default class CharDetails extends Component {
     render() {
         return (
             <div className="char-details rounded">
-            {/* <Details> */}
                 <h4>John Snow</h4>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item d-flex justify-content-between">
@@ -39,7 +38,6 @@ export default class CharDetails extends Component {
                         <span>First</span>
                     </li>
                 </ul>
-            {/* </Details> */}
             </div>
         );
     }
