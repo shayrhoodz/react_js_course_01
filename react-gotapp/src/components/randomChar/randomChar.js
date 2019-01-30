@@ -1,21 +1,44 @@
 import React, {Component} from 'react';
-import './randomChar.css';
+// import './randomChar.css';
 import gotService from '../../services/gotService';
-import Spinner from '../spinner'
+import Spinner from '../spinner';
 import ErrorMessage from '../errorMessage';
 
-export default class RandomChar extends Component {
+import styled from 'styled-components';
 
-    constructor() {
-        super();
-        this.updateChar();
+const DivStyled = styled.div`
+    background-color: #fff;
+    padding: 25px 25px 15px 25px;
+    margin-bottom: 40px;
+    h4 {
+        margin-bottom: 20px;
+        text-align: center;
     }
+`
+const SpanStyled = styled.span`
+    font-weight: bold;
+`
+
+export default class RandomChar extends Component {
 
     gotService = new gotService();
     state = {
         char: {},
         loading: true,
         error: false
+    }
+
+    // метод (хук) вызывается тогда когда уже вызван и render и constructor (когда элемент уже помещен на страницу)
+    componentDidMount() {
+        // console.log('mounting');
+        this.updateChar();
+        this.timerId = setInterval(this.updateChar, 1500);
+    }
+
+    // вызывается когда элемент исчез со страницы (метод вызывается до того как сама дом структура будет удалена со страницы)
+    componentWillUnmount() {
+        // console.log('unmounting');
+        clearInterval(this.timerId);
     }
 
     onCharLoaded = (char) => {
@@ -32,7 +55,8 @@ export default class RandomChar extends Component {
         })
     }
 
-    updateChar() {
+    updateChar = () => {
+        // console.log('update');
         const id = Math.floor(Math.random()*140 + 25); // 25 - 140 персонаж
         // const id = 130000;
         this.gotService.getCharacter(id)
@@ -41,6 +65,8 @@ export default class RandomChar extends Component {
     }
 
     render() {
+        console.log('render');
+
         const { char, loading, error } = this.state;
 
         const errorMessage = error ? <ErrorMessage/> : null;
@@ -48,11 +74,11 @@ export default class RandomChar extends Component {
         const content = !(loading || error) ? <View char={char}/> : null;
 
         return (
-            <div className="random-block rounded">
+            <DivStyled className="rounded">
                 {errorMessage}
                 {spinner}
                 {content}
-            </div>
+            </DivStyled>
         );
     }
 }
@@ -64,19 +90,19 @@ const View = ({char}) => {
             <h4>Random Character: {name}</h4>
             <ul className="list-group list-group-flush">
                 <li className="list-group-item d-flex justify-content-between">
-                    <span className="term">Gender </span>
+                    <SpanStyled>Gender </SpanStyled>
                     <span>{gender}</span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between">
-                    <span className="term">Born </span>
+                    <SpanStyled>Born </SpanStyled>
                     <span>{born}</span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between">
-                    <span className="term">Died </span>
+                    <SpanStyled>Died </SpanStyled>
                     <span>{died}</span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between">
-                    <span className="term">Culture </span>
+                    <SpanStyled>Culture </SpanStyled>
                     <span>{culture}</span>
                 </li>
             </ul>

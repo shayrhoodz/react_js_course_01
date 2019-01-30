@@ -43,7 +43,8 @@ export default class GotSevrice {
       gender: char.gender,
       born: char.born,
       died: char.died,
-      culture: char.culture
+      culture: char.culture,
+      id: char.url.match(/\d/g).join('')
     }
   }
 
