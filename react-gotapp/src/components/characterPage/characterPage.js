@@ -25,9 +25,9 @@ export default class CharacterPage extends Component {
 
   render() {
 
-    // if (this.state.error) {
-    //   return <ErrorMessage/>
-    // }
+    if (this.state.error) {
+      return <ErrorMessage/>
+    }
 
     return (
       <Row>

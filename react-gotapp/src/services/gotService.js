@@ -27,7 +27,7 @@ export default class GotSevrice {
   }
   async getHouse(id) {
     const house = await this.getResource(`/houses/${id}`);
-    return this._transformCharacter(house);
+    return this._transformHouse(house);
   }
   async getAllBooks() {
     const res = await this.getResource('/books');
@@ -35,7 +35,7 @@ export default class GotSevrice {
   }
   async getBook(id) {
     const book = await this.getResource(`/books/${id}`);
-    return this._transformCharacter(book);
+    return this._transformBook(book);
   }
   _transformCharacter(char) {
     return {
@@ -44,7 +44,7 @@ export default class GotSevrice {
       born: char.born,
       died: char.died,
       culture: char.culture,
-      id: char.url.match(/\d/g).join('')
+      id: char.url.replace(/https:\/\/www.anapioficeandfire.com\/api\/characters\//,"")
     }
   }
 
