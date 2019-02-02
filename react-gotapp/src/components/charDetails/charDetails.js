@@ -3,10 +3,8 @@ import gotService from '../../services/gotService';
 import Spinner from '../spinner';
 import ErrorMessage from '../errorMessage';
 
-
-
-
 import styled from 'styled-components';
+
 
 const DivStyled = styled.div`
     background-color: #fff;
@@ -22,6 +20,21 @@ const SpanStyled = styled.span`
     text-align: center;
     font-size: 26px;
 `
+
+
+// получили компонент из CharacterPage
+const Field = ({item, field, label}) => {
+    return (
+        <li className="list-group-item d-flex justify-content-between">
+            <span className="term">{label}</span>
+            <span>{item[field]}</span>
+        </li>
+    )
+}
+
+export {
+    Field
+}
 
 export default class CharDetails extends Component {
 
@@ -99,27 +112,18 @@ export default class CharDetails extends Component {
 }
 
 const View = ({char}) => {
-    const {name, gender, born, died, culture, id} = char;
+
+    const {name, id} = char;
     return (
         <>
             <h4>{name} {id}</h4>
             <ul className="list-group list-group-flush">
-                <li className="list-group-item d-flex justify-content-between">
-                    <span className="term">Gender</span>
-                    <span>{gender}</span>
-                </li>
-                <li className="list-group-item d-flex justify-content-between">
-                    <span className="term">Born</span>
-                    <span>{born}</span>
-                </li>
-                <li className="list-group-item d-flex justify-content-between">
-                    <span className="term">Died</span>
-                    <span>{died}</span>
-                </li>
-                <li className="list-group-item d-flex justify-content-between">
-                    <span className="term">Culture</span>
-                    <span>{culture}</span>
-                </li>
+                {/* так получаем КОМПОНЕНТ переданный из CharacterPage */}
+                {
+                    React.Children.map(this.props.children, (child) => {
+                        return React.cloneElement(child, {char})
+                    })
+                }
             </ul>
         </>
     );
