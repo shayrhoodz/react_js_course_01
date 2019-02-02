@@ -39,11 +39,11 @@ export default class GotSevrice {
   }
   _transformCharacter(char) {
     return {
-      name: char.name,
-      gender: char.gender,
-      born: char.born,
-      died: char.died,
-      culture: char.culture,
+      name: char.name || "no data",
+      gender: char.gender || "no data",
+      born: char.born || "no data",
+      died: char.died || "no data",
+      culture: char.culture || "no data",
       id: char.url.replace(/https:\/\/www.anapioficeandfire.com\/api\/characters\//,"")
     }
   }

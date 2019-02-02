@@ -23,11 +23,11 @@ const SpanStyled = styled.span`
 
 
 // получили компонент из CharacterPage
-const Field = ({char, field, label}) => {
+const Field = ({item, field, label}) => {
     return (
         <li className="list-group-item d-flex justify-content-between">
             <span className="term">{label}</span>
-            <span>{char[field]}</span>
+            <span>{item[field]}</span>
         </li>
     )
 }
@@ -36,19 +36,19 @@ export {
     Field
 }
 
-export default class CharDetails extends Component {
+export default class ItemDetails extends Component {
 
-    gotService = new gotService();
+    // gotService = new gotService();
 
     state = {
-        char: null,
+        item: null,
         loading: true,
         error: false
     }
 
     
     componentDidMount() {
-        this.updateChar();
+        this.updateItem();
         // this.setState({
         //     loading: false
         // })
@@ -56,21 +56,22 @@ export default class CharDetails extends Component {
 
     // принимает 2 аргумента prevProps и prevState
     componentDidUpdate(prevProps) {
-        if (this.props.charId !== prevProps.charId) {
-            this.updateChar();
+        if (this.props.itemId !== prevProps.itemId) {
+            this.updateItem();
         }
     }
 
-    updateChar() {
-        const {charId} = this.props;
-        if (!charId) {
+    updateItem() {
+        const {itemId, getItem} = this.props;
+        if (!itemId) {
             return;
         }
 
-        this.gotService.getCharacter(charId)
-            .then((char) => {
+        // this.gotService.getCharacter(itemId)
+        getItem(itemId)
+            .then((item) => {
                 this.setState({
-                    char,
+                    item,
                     loading: false
                 })
             })
@@ -89,13 +90,13 @@ export default class CharDetails extends Component {
         //     return <ErrorMessage/>
         // }
 
-        const { char, loading, error } = this.state;
+        const { item, loading, error } = this.state;
         
         const errorMessage = error ? <ErrorMessage/> : null;
         const spinner = loading ? <Spinner/> : null;
-        const content = !(loading || error) ? <View char={char} children={this.props.children}/> : null;
+        const content = !(loading || error) ? <View char={item} children={this.props.children}/> : null;
 
-        if (!this.state.char) {
+        if (!this.state.item) {
             return <SpanStyled>Please select a character</SpanStyled>
         }
 
@@ -111,17 +112,17 @@ export default class CharDetails extends Component {
     }
 }
 
-const View = ({char, children}) => {
+const View = ({item, children}) => {
 
-    const {name, id} = char;
+    const {name, id} = item;
     return (
         <>
             <h4>{name} {id}</h4>
             <ul className="list-group list-group-flush">
                 {/* так получаем КОМПОНЕНТ переданный из CharacterPage */}
                 {
-                    React.Children.map(children, (child) => {
-                        return React.cloneElement(child, {char})
+                    React.Children.map(children, (item) => {
+                        return React.cloneElement(item, {item})
                     })
                 }
             </ul>
