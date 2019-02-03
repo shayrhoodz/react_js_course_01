@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import gotService from '../../services/gotService';
+// import gotService from '../../services/gotService';
 import Spinner from '../spinner';
 import ErrorMessage from '../errorMessage';
 
@@ -21,12 +21,19 @@ const SpanStyled = styled.span`
     font-size: 26px;
 `
 
+const SpanStyledBold = styled.span`
+    font-weight: bold;
+`
+
+
+
 
 // получили компонент из CharacterPage
 const Field = ({item, field, label}) => {
+    console.log(item);
     return (
         <li className="list-group-item d-flex justify-content-between">
-            <span className="term">{label}</span>
+            <SpanStyledBold className="term">{label}</SpanStyledBold>
             <span>{item[field]}</span>
         </li>
     )

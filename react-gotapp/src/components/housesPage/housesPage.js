@@ -4,24 +4,23 @@ import ItemList from '../itemList';
 import ItemDetails, {Field} from '../itemDetails';
 import ErrorMessage from '../errorMessage';
 import gotService from '../../services/gotService';
-import RowBlock from '../../components/rowBlock'
+import RowBlock from '../rowBlock'
 
 
 
-export default class CharacterPage extends Component {
+export default class HousesPage extends Component {
 
   gotService = new gotService();
 
 
   state = {
-    selectedChar: null,
+    selectedHouse: null,
     error: false
   }
 
   onItemSelected = (id) => {
-    // console.log(id);
     this.setState({
-        selectedChar: id
+      selectedHouse: id
     })
   }
 
@@ -40,19 +39,22 @@ export default class CharacterPage extends Component {
     const itemList = (
       <ItemList 
         onItemSelected={this.onItemSelected}
-        getData={this.gotService.getAllCharacters}
-        renderItem={({name, gender}) => `${name} (${gender})`}/>
+        getData={this.gotService.getAllHouses}
+        renderItem={({name, region}) => `${name} ${region}`}/>
     )
 
     const itemDetails = (
-      <ItemDetails itemId={this.state.selectedChar} getItem={this.gotService.getCharacter}>
+      <ItemDetails itemId={this.state.selectedHouse} getItem={this.gotService.getHouse}>
         {/* передаем компоненты */}
-        <Field field='gender' label='Gender' /> 
-        <Field field='born' label='Born' />
-        <Field field='died' label='Died' />
-        <Field field='culture' label='Culture' />
+        <Field field='name' label='Name' /> 
+        <Field field='region' label='Region' />
+        <Field field='words' label='Words' />
+        <Field field='titles' label='Titles' />
+        <Field field='overlord' label='Overlord' />
+        <Field field='ancestralWeapons' label='AncestralWeapons' />
       </ItemDetails>
     )
+    console.log(this.state.selectedHouse);
 
     return (
       <RowBlock left={itemList} right={itemDetails}/>

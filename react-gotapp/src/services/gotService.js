@@ -31,7 +31,7 @@ export default class GotSevrice {
   }
   getAllBooks = async () => {
     const res = await this.getResource('/books');
-    return res.map(this._transformHouse);
+    return res.map(this._transformBook);
   }
   getBook = async (id) => {
     const book = await this.getResource(`/books/${id}`);
@@ -44,7 +44,7 @@ export default class GotSevrice {
       born: char.born || "no data",
       died: char.died || "no data",
       culture: char.culture || "no data",
-      id: char.url.replace(/https:\/\/www.anapioficeandfire.com\/api\/characters\//,"")
+      id: char.url.replace(/https:\/\/www.anapioficeandfire.com\/api\/characters\//,"")      
     }
   }
 
@@ -55,7 +55,8 @@ export default class GotSevrice {
       words: house.words,
       titles: house.titles,
       overlord: house.overlord,
-      ancestralWeapons: house.ancestralWeapons
+      ancestralWeapons: house.ancestralWeapons,
+      id: house.url.replace(/https:\/\/www.anapioficeandfire.com\/api\/houses\//,"")
     }
   }
 
@@ -63,7 +64,7 @@ export default class GotSevrice {
     return {
       name: book.name,
       numberOfPages: book.numberOfPages,
-      publiser: book.publiser,
+      publisher: book.publisher,
       released: book.released,
       id: book.url.replace(/https:\/\/www.anapioficeandfire.com\/api\/books\//,"")
     }

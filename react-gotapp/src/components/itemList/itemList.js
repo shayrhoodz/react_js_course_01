@@ -4,7 +4,7 @@ import ErrorMessage from '../errorMessage';
 
 import styled from 'styled-components';
 
-const LilStyled = styled.li`
+const LiStyled = styled.li`
     cursor: pointer;
 `
 
@@ -30,14 +30,15 @@ export default class ItemList extends Component {
     renderItems(arr) {        
         return arr.map((item,i) => {
             const {id} = item;
+            // console.log(item);
             const label = this.props.renderItem(item);
             return (
-                <LilStyled 
+                <LiStyled 
                     key={i}
                     className="list-group-item"
                     onClick={ () => this.props.onItemSelected(id)}>
                     {label}
-                </LilStyled>
+                </LiStyled>
             )
         })
     }
