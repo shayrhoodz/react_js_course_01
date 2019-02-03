@@ -64,7 +64,8 @@ export default class GotSevrice {
       name: book.name,
       numberOfPages: book.numberOfPages,
       publiser: book.publiser,
-      released: book.released
+      released: book.released,
+      id: book.url.replace(/https:\/\/www.anapioficeandfire.com\/api\/books\//,"")
     }
   }
 }

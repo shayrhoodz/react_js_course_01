@@ -89,12 +89,13 @@ export default class ItemDetails extends Component {
         // if (this.state.error) {
         //     return <ErrorMessage/>
         // }
+        
 
         const { item, loading, error } = this.state;
         
         const errorMessage = error ? <ErrorMessage/> : null;
         const spinner = loading ? <Spinner/> : null;
-        const content = !(loading || error) ? <View char={item} children={this.props.children}/> : null;
+        const content = !(loading || error) ? <View item={item} children={this.props.children}/> : null;
 
         if (!this.state.item) {
             return <SpanStyled>Please select a character</SpanStyled>
@@ -113,7 +114,7 @@ export default class ItemDetails extends Component {
 }
 
 const View = ({item, children}) => {
-
+    console.log(item);
     const {name, id} = item;
     return (
         <>
@@ -121,8 +122,8 @@ const View = ({item, children}) => {
             <ul className="list-group list-group-flush">
                 {/* так получаем КОМПОНЕНТ переданный из CharacterPage */}
                 {
-                    React.Children.map(children, (item) => {
-                        return React.cloneElement(item, {item})
+                    React.Children.map(children, (child) => {
+                        return React.cloneElement(child, {item})
                     })
                 }
             </ul>

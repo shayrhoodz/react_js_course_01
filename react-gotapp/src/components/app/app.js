@@ -4,8 +4,9 @@ import Header from '../header';
 import RandomChar from '../randomChar';
 import ErrorMessage from '../errorMessage';
 import CharacterPage from '../characterPage';
+import BooksPage from '../booksPage';
 import ItemList from '../itemList';
-import CharDetails from '../charDetails';
+import ItemDetails from '../itemDetails';
 import gotService from '../../services/gotService';
 
 
@@ -69,7 +70,8 @@ export default class App extends Component {
                         </Col>
                     </Row>
                     <CharacterPage/>
-                    <Row>
+                    <BooksPage/>
+                    {/* <Row>
                         <Col md='6'>
                             <ItemList 
                                 onItemSelected={this.onItemSelected}
@@ -78,10 +80,10 @@ export default class App extends Component {
                             />
                         </Col>
                         <Col md='6'>
-                            <CharDetails charId={this.state.selectedChar}/>
+                            <ItemDetails itemId={this.state.selectedChar}/>
                         </Col>
-                    </Row>
-                    <Row>
+                    </Row> */}
+                    {/* <Row>
                         <Col md='6'>
                             <ItemList 
                             onItemSelected={this.onItemSelected}
@@ -92,7 +94,7 @@ export default class App extends Component {
                         <Col md='6'>
                             <CharDetails charId={this.state.selectedChar}/>
                         </Col>
-                    </Row>
+                    </Row> */}
                 </Container>
             </>
         );
