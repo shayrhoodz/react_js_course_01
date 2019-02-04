@@ -30,7 +30,7 @@ const SpanStyledBold = styled.span`
 
 // получили компонент из CharacterPage
 const Field = ({item, field, label}) => {
-    console.log(item);
+    // console.log(item);
     return (
         <li className="list-group-item d-flex justify-content-between">
             <SpanStyledBold className="term">{label}</SpanStyledBold>
@@ -121,7 +121,7 @@ export default class ItemDetails extends Component {
 }
 
 const View = ({item, children}) => {
-    console.log(item);
+    // console.log(item);
     const {name, id} = item;
     return (
         <>

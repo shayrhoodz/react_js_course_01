@@ -63,9 +63,12 @@ export default class RandomChar extends Component {
             .then(this.onCharLoaded)
             .catch(this.onError);
     }
-
+    
     render() {
         // console.log('render');
+        
+        // const {show} = this.props;
+        // console.log(show);
 
         const { char, loading, error } = this.state;
 

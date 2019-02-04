@@ -54,7 +54,7 @@ export default class HousesPage extends Component {
         <Field field='ancestralWeapons' label='AncestralWeapons' />
       </ItemDetails>
     )
-    console.log(this.state.selectedHouse);
+    // console.log(this.state.selectedHouse);
 
     return (
       <RowBlock left={itemList} right={itemDetails}/>

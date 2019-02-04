@@ -31,7 +31,7 @@ export default class App extends Component {
     gotService = new gotService();
 
     state = {
-        showChar: true,
+        showChar: false,
         error:false
     };
 
@@ -45,7 +45,7 @@ export default class App extends Component {
     toggleBlock = () => {
         this.setState({
             showChar: !this.state.showChar
-        })
+        })        
         // console.log(this.state.showChar);
     };
 
@@ -53,7 +53,7 @@ export default class App extends Component {
 
     render() {
         const {showChar} = this.state;
-        const toggleRandomChar = !showChar ? <RandomChar/> : null;
+        const toggleRandomChar = showChar ? <RandomChar/> : null;
 
         if (this.state.error) {
             return <ErrorMessage/>
@@ -71,6 +71,7 @@ export default class App extends Component {
                                 <Button onClick={this.toggleBlock}>Toggle random character</Button>
                                 {/* <RandomChar/> */}
                                 {toggleRandomChar}
+                                {/* <RandomChar show={showChar} /> */}
                             </Col>
                         </Row>
                         <Route path='/' exact component={() => <h1>Welcome to GOT DB</h1>}/>
