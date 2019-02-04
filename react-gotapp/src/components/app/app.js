@@ -6,10 +6,11 @@ import ErrorMessage from '../errorMessage';
 // import CharacterPage from '../characterPage';
 // import BooksPage from '../booksPage';
 // import HousesPage from '../housesPage';
-import {HousesPage, BooksPage, CharacterPage} from '../pages';
+import {HousesPage, BooksPage, CharacterPage, BooksItem} from '../pages';
 import ItemList from '../itemList';
 import ItemDetails from '../itemDetails';
 import gotService from '../../services/gotService';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 
 import styled from 'styled-components';
@@ -30,7 +31,7 @@ export default class App extends Component {
     gotService = new gotService();
 
     state = {
-        showChar: false,
+        showChar: true,
         error:false
     };
 
@@ -59,47 +60,36 @@ export default class App extends Component {
         }
 
         return (
-            <> 
-                <Container>
-                    <Header />
-                </Container>
-                <Container>
-                    <Row>
-                        <Col lg={{size: 5, offset: 0}}>
-                            <Button onClick={this.toggleBlock}>Toggle random character</Button>
-                            {/* <RandomChar/> */}
-                            {toggleRandomChar}
-                        </Col>
-                    </Row>
-                    <CharacterPage/>
-                    <BooksPage/>
-                    <HousesPage/>
-                    {/* <Row>
-                        <Col md='6'>
-                            <ItemList 
-                                onItemSelected={this.onItemSelected}
-                                getData={this.gotService.getAllBooks}
-                                renderItem={(item) => item.name}
-                            />
-                        </Col>
-                        <Col md='6'>
-                            <ItemDetails itemId={this.state.selectedChar}/>
-                        </Col>
-                    </Row> */}
-                    {/* <Row>
-                        <Col md='6'>
-                            <ItemList 
-                            onItemSelected={this.onItemSelected}
-                            getData={this.gotService.getAllHouses}
-                            renderItem={(item) => item.name}
-                            />
-                        </Col>
-                        <Col md='6'>
-                            <CharDetails charId={this.state.selectedChar}/>
-                        </Col>
-                    </Row> */}
-                </Container>
-            </>
+            <Router>
+                <div className="app"> 
+                    <Container>
+                        <Header />
+                    </Container>
+                    <Container>
+                        <Row>
+                            <Col lg={{size: 5, offset: 0}}>
+                                <Button onClick={this.toggleBlock}>Toggle random character</Button>
+                                {/* <RandomChar/> */}
+                                {toggleRandomChar}
+                            </Col>
+                        </Row>
+                        <Route path='/' exact component={() => <h1>Welcome to GOT DB</h1>}/>
+                        <Route path='/characters' component={CharacterPage}/>                        
+                        <Route path='/houses' component={HousesPage}/>
+                        <Route path='/books' exact component={BooksPage}/>
+                        {/* <div className="app">  */}
+                        <Route path='/books/:id' render={
+                            ({match}) => {
+                                const {id} = match.params;
+                                // console.log(match);
+                                // console.log(location);
+                                // console.log(history);
+                            return <BooksItem bookId={id} />}
+                        }/>
+                        {/* </div> */}
+                    </Container>
+                </div>
+            </Router>
         );
     }
     
