@@ -1,39 +1,69 @@
+import React from 'react';
+import ReactDom from 'react-dom';
 import {createStore} from 'redux';
-
-const reducer = (state = 0, action) => {
-  switch (action.type) {
-    case 'INC':
-      return state + 1;
-    case 'DEC':
-      return state - 1;
-    case 'RST':
-      return state = 0;
-    default:
-      return state;
-  }
-}
-
-// action creater
-const inc = () => ({type: 'INC'}); // тоже самое что и ниже
-const dec = () => ({type: 'DEC'});
-const rst = () => ({type: 'RST'});
-
-const store = createStore(reducer); // 1 тоже самое
-// console.log(store.getState());
-
-document.getElementById('inc').addEventListener('click', () => {
-  store.dispatch(inc());
-});
-document.getElementById('dec').addEventListener('click', () => {
-  store.dispatch(dec());
-});
-document.getElementById('rst').addEventListener('click', () => {
-  store.dispatch(rst());
-});
+import {Provider} from 'react-redux';
+import reducer from './reducer';
+// import * as actions from './action';
+import App from './components/app';
 
 
-const update = () => {
-  document.getElementById('counter').textContent = store.getState();
-}
+const store = createStore(reducer);
+// const {dispatch} = store;
 
-store.subscribe(update);
+
+// const {inc, dec, rst} = bindActionCreators(actions, dispatch);
+
+// document.getElementById('inc').addEventListener('click', inc);
+// document.getElementById('dec').addEventListener('click', dec);
+// document.getElementById('rst').addEventListener('click', rst);
+
+
+// const update = () => {
+  // document.getElementById('counter').textContent = store.getState();
+
+ReactDom.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+  , document.getElementById('root'));
+
+
+// }
+// update();
+
+// // rst={() => {
+// //   const value = Math.floor(Math.random() * 10);
+// //   rst(value);
+// // }}          
+// store.subscribe(update);
+
+
+
+
+
+  // document.getElementById('rst').addEventListener('click', () => {
+    //   const value = Math.floor(Math.random() * 10);
+    //   rst(value);
+  // });
+
+// const bindActionCreater = (creator, dispatch) => (...args) => {
+//   dispatch(creator(...args));
+// }
+
+// const {incDispatch, decDispatch, rstDispatch} = bindActionCreators(
+//   {
+//     incDispatch: inc,
+//     decDispatch: dec,
+//     rstDispatch: rst
+//   }
+//   , dispatch);
+// const decDispatch = bindActionCreators(dec, dispatch);
+// const rstDispatch = bindActionCreators(rst, dispatch);
+
+
+
+
+// const incDispatch = () => dispatch(inc());
+// const decDispatch = () => dispatch(dec());
+// const rstDispatch = () => dispatch(rst());
+// const rstDispatch = (value) => dispatch(rst(value));
