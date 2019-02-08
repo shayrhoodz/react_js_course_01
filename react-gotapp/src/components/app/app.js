@@ -7,8 +7,8 @@ import ErrorMessage from '../errorMessage';
 // import BooksPage from '../booksPage';
 // import HousesPage from '../housesPage';
 import {HousesPage, BooksPage, CharacterPage, BooksItem} from '../pages';
-import ItemList from '../itemList';
-import ItemDetails from '../itemDetails';
+// import ItemList from '../itemList';
+// import ItemDetails from '../itemDetails';
 import gotService from '../../services/gotService';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
@@ -24,6 +24,16 @@ const Button = styled.button`
     border-radius : 0.25rem;
     color : white;
     cursor : pointer;
+`
+
+const Span = styled.div`
+    color: white;
+    margin: auto;
+    width: 90%;
+    text-align: center
+    img {
+        width: 100%
+    }
 `
 
 export default class App extends Component {
@@ -74,7 +84,10 @@ export default class App extends Component {
                                 {/* <RandomChar show={showChar} /> */}
                             </Col>
                         </Row>
-                        <Route path='/' exact component={() => <h1>Welcome to GOT DB</h1>}/>
+                        <Route path='/' exact component={() => <Span>
+                            <h1>Welcome to GOT DB, creating in React</h1>
+                            <img src="./img/got_two.png" alt="Welcome"/>
+                        </Span>}/>
                         <Route path='/characters' component={CharacterPage}/>                        
                         <Route path='/houses' component={HousesPage}/>
                         <Route path='/books' exact component={BooksPage}/>

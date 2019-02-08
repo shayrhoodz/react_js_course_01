@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Spinner from '../spinner';
 import ErrorMessage from '../errorMessage';
 
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 // const LiStyled = styled.li`
 //     cursor: pointer;
