@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import MainPage from '../mainPage';
 import CoffeePage from '../coffeePage';
 import PleasurePage from '../pleasurePage';
+import ItemDetails from '../itemDetails';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import GetService from '../../services/getService';
-// import Footer from '../footer';
+import Footer from '../footer';
+
 
 export default class App extends Component {
 
@@ -17,19 +19,11 @@ export default class App extends Component {
     return (
       <Router>
         <div className="app">
-          {/* <Route path='/' component={() => MainPage} /> */}
           <Route path='/' exact component={MainPage} />
-          {/* <Route path='/mainpage' component={MainPage} /> */}
-          <Route path='/coffeepage' component={CoffeePage} />
+          <Route path='/coffeepage' exact component={CoffeePage} />
           <Route path='/pleasurepage' component={PleasurePage} />
-          {/* <Route path='/pleasurepage/:id' render={
-                            ({match}) => {
-                                const {id} = match.params;
-                                // console.log(match);
-                                // console.log(location);
-                                // console.log(history);
-                            return <BooksItem ItemList={id} />}
-                        }/> */}
+          <Route path="/coffeepage/:id" component = {ItemDetails}/>
+          <Footer />
         </div>
       </Router>
     );

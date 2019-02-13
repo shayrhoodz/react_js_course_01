@@ -91,7 +91,7 @@ export default class MainPage extends Component {
             </div>
         </div>
     </section>
-    <Footer />
+    {/* <Footer /> */}
 	</>
     )
   }

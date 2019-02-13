@@ -103,7 +103,7 @@ export default class PleasurePage extends Component {
             </div>
         </div>
     </section>
-    <Footer />
+    {/* <Footer /> */}
     </>
     )
   }

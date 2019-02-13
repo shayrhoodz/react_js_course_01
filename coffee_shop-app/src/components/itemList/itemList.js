@@ -24,9 +24,9 @@ class ItemList extends Component {
 
   renderCoffee(arr) {
     const {name} = this.state;     
-    return arr.map((item,i) => {
+    return arr.map((item,id) => {
       return (
-        <div key = {i} className="shop__item"
+        <div key = {id} className="shop__item"
           onClick={() => this.onRenderCoffee(item, name)}>													
           <img src={item.url} alt={item.name}/>
           <div className="shop__item-title">
@@ -45,7 +45,7 @@ class ItemList extends Component {
 
   onRenderCoffee = (item, name) => {
     if(name !== 'coffeePage') {
-      this.props.history.push(`/cofeePage/${item.name}`, item);
+      this.props.history.push(`/coffeePage/${item.name}`, item);
     }
   }
 
