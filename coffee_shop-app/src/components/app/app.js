@@ -12,8 +12,8 @@ export default class App extends Component {
   
 
   render() {
-    const {getBestItems1} = this.gotService;
-    console.log(getBestItems1);
+    // const {getBestItems1} = this.gotService;
+    // console.log(getBestItems1);
     return (
       <Router>
         <div className="app">
@@ -22,6 +22,14 @@ export default class App extends Component {
           {/* <Route path='/mainpage' component={MainPage} /> */}
           <Route path='/coffeepage' component={CoffeePage} />
           <Route path='/pleasurepage' component={PleasurePage} />
+          {/* <Route path='/pleasurepage/:id' render={
+                            ({match}) => {
+                                const {id} = match.params;
+                                // console.log(match);
+                                // console.log(location);
+                                // console.log(history);
+                            return <BooksItem ItemList={id} />}
+                        }/> */}
         </div>
       </Router>
     );

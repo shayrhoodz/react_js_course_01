@@ -3,8 +3,14 @@ import Header from '../header';
 import Footer from '../footer';
 import './coffeePage.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
+import ItemList from '../itemList';
+import GetService from '../../services/getService';
+
 
 export default class CoffeePage extends Component {
+
+	service = new GetService();
+
 	render() {
 
     return(
@@ -25,7 +31,7 @@ export default class CoffeePage extends Component {
 			</Router>
       
 
-      <section className="shop">
+    	<section className="shop">
         <div className="container">
             <div className="row">
                 <div className="col-lg-4 offset-2">
@@ -69,7 +75,8 @@ export default class CoffeePage extends Component {
             <div className="row">
                 <div className="col-lg-10 offset-lg-1">
                     <div className="shop__wrapper">
-                        <div className="shop__item">
+											<ItemList getData = {this.service.getShop} />
+                        {/* <div className="shop__item">
 													
                             <img src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg" alt="coffee"/>
                             <div className="shop__item-title">
@@ -118,7 +125,7 @@ export default class CoffeePage extends Component {
                             </div>
                             <div className="shop__item-country">Brazil</div>
                             <div className="shop__item-price">10.73$</div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

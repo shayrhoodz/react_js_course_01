@@ -12,12 +12,24 @@ export default class GetService {
     return res.bestsellers;
   }
 
+  getShop = async () => {
+    const res = await this.getAllData();
+    return res.coffee;
+  }
+
+  getGoods = async () => {
+    const res = await this.getAllData();
+    return res.goods;
+  }
+
 }
 
-const got = new GetService();
+// const got = new GetService();
 
-got.getAllData()
-  .then(shit => console.log(shit.bestsellers));
+// console.log(got.getAllData());
+
+// got.getAllData()
+//   .then(shit => console.log(shit));
 
 
 

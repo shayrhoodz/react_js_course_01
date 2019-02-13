@@ -3,8 +3,16 @@ import Header from '../header';
 import Footer from '../footer';
 import {Link} from 'react-router-dom';
 import './mainPage.css';
+import ItemList from '../itemList';
+import GetService from '../../services/getService';
+
 
 export default class MainPage extends Component {
+
+
+	service = new GetService();
+
+
   render() {
 
     return(
@@ -26,10 +34,10 @@ export default class MainPage extends Component {
 						</div>
 					</div>
         </div>
-      </div>
-      <section className="about">
+        </div>
+        <section className="about">
         <div className="container">
-          <div className="row">
+        	<div className="row">
             <div className="col-lg-6 offset-lg-3">
               <div className="title">About Us</div>
                 <img className="beanslogo" src="img/logo/Beans_logo_dark.svg" alt="Beans logo"/>
@@ -56,13 +64,14 @@ export default class MainPage extends Component {
             <div className="row">
                 <div className="col-lg-10 offset-lg-1">
                     <div className="best__wrapper">
-                        <div className="best__item">
+												<ItemList getData = {this.service.getBestItems} />
+                        {/* <div className="best__item">
                             <img src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg" alt="coffee"/>
                             <div className="best__item-title">
                                 Solimo Coffee Beans 2kg
                             </div>
                             <div className="best__item-price">10.73$</div>
-                        </div>
+                        </div> */}
                         {/* <div className="best__item">
                             <img src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg" alt="coffee"/>
                             <div className="best__item-title">
