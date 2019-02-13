@@ -1,5 +1,6 @@
 import React from 'react';
 import './footer.css';
+import {Link} from 'react-router-dom';
 
 const Footer = () => {
   return(
@@ -9,15 +10,15 @@ const Footer = () => {
           <div className="col-lg-5 offset-lg-4">
             <ul className="footer">
               <li className="footer__item">
-                <a href="#">
+                <Link to='/'>
                   <img src="../img/logo/Logo_black.svg" alt="logo"/>
-                </a>
+                </Link>
               </li>
               <li className="footer__item">
-                <a href="#">Our coffee</a>
+                <Link to='/coffeepage'>Our coffee</Link>
               </li>
               <li className="footer__item">
-                <a href="#">For your pleasure</a>
+                <Link to='/pleasurepage'>For your pleasure</Link>
               </li>
             </ul>
           </div>
